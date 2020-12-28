@@ -1,8 +1,11 @@
-# PLHash
+# PLHash - experimental
 
-This package defines Hashes which uniquely identify things and self-identify the hashing algorithm used for their own creation.
+This package defines `Hash`es which:
+- Uniquely identify some hashed value within it's type
+- Self-describe the algorithm used to perform the hash
+- May be shortened against other `Hash`es to produce the 'shortest unambiguous
+  hash'.
 
-A Hashable type-class is an interface that describes how types can be Hashed.
-
-By default, `SHA512` is used as the hashing algorithm and hashes are rendered as base58 encoded text.
+This is currently used by the [PL](https://github.com/syallop/PL) project for
+storing content-addressed programs that can be referenced with wieldy names.
 

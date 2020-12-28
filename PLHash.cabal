@@ -13,6 +13,7 @@ cabal-version:       >=1.10
 
 library
   exposed-modules:     PLHash
+                     , PLHash.Short
 
   -- other-modules:       
   other-extensions:    OverloadedStrings

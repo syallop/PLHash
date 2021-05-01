@@ -29,15 +29,11 @@ import Prelude hiding (lookup)
 import PLHash
 
 -- Other
-import Data.Map (Map)
 import Data.Maybe
-import Data.Set (Set)
 import Data.Text (Text)
 import Data.Text.Encoding
 import qualified Data.ByteString as BS
 import qualified Data.ByteString.Base58 as B58
-import qualified Data.Map as Map
-import qualified Data.Set as Set
 import qualified Data.Text as Text
 
 -- | A Hash that may have had it's bytes truncated an arbitrary amount.
@@ -67,8 +63,6 @@ mkBase58ShortHash mAlg txt = case fromMaybe SHA512 mAlg of
           if BS.length bytes == 0  || 128 < BS.length bytes
             then Nothing
             else Just $ ShortHash SHA512 bytes
-  _
-    -> error "Unrecognised hashing algorithm"
 
 -- | Extract a Hashes algorithm (if it is not the default) and (possibly
 -- truncated) base58 interpretation of the hash.
@@ -77,7 +71,6 @@ unBase58ShortHash (ShortHash alg bytes) =
   let mAlg = case alg of
                SHA512
                  -> Nothing
-               a -> Just a
       txt  = decodeUtf8 . B58.encodeBase58 B58.bitcoinAlphabet $ bytes
    in (mAlg, txt)
 

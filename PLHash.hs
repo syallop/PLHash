@@ -101,8 +101,8 @@ hashWith alg = hashToken alg . toHashToken
 -- separated by a '/' and followed by a base58 interpretation of the hash
 -- itself.
 showBase58 :: Hash -> Text
-showBase58 hash =
-  let (alg,txt) = unBase58 hash
+showBase58 h =
+  let (alg,txt) = unBase58 h
    in mconcat
         [ hashIdentifier alg
         , "/"
@@ -151,8 +151,6 @@ mkBase58 alg txt =
                                  , string . show $ len
                                  ]
                           else Right $ Hash SHA512 bytes
-        _
-          -> Left . ctx . text $ "Unrecognised hashing algorithm"
 
 -- | Extract a Hashes algorithm and base58 interpretation of the hash itself.
 unBase58 :: Hash -> (HashAlgorithm, Text)
@@ -186,7 +184,6 @@ hashIdentifier :: HashAlgorithm -> Text
 hashIdentifier a = case a of
   SHA512
     -> "SHA512"
-  _ -> error "Hash Algorithm unknown"
 
 -- | Read a hash identifier to the corresponding algorithm.
 readHashAlgorithm :: Text -> Maybe HashAlgorithm
@@ -264,8 +261,8 @@ hashToken alg h = case h of
              , byteString "]"
              ]
 
-  HashIs (Hash alg bs)
-    -> Hash alg bs
+  HashIs (Hash alg' bs)
+    -> Hash alg' bs
 
 class Hashable h where
   toHashToken :: h -> HashToken

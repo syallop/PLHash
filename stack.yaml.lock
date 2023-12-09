@@ -5,33 +5,33 @@
 
 packages:
 - completed:
+    commit: 74fd1a684542f9f876753e2d7b3b0d5609bf385e
+    git: https://github.com/syallop/PLPrinter
     name: PLPrinter
-    version: 0.3.0.0
-    git: https://github.com/syallop/PLPrinter
     pantry-tree:
-      size: 420
-      sha256: 04580b924299a5df533a38161311e5d78b40cbff825d9702313a71ac9aad3887
-    commit: 65f4d3805c06fbbe0e4313f17a2129e5fe2187f9
+      sha256: a0cf031336490091fbaace9e3b555158818f0f6429c1a9ca339ed34e482c14d9
+      size: 474
+    version: 0.3.0.0
   original:
+    commit: 74fd1a684542f9f876753e2d7b3b0d5609bf385e
     git: https://github.com/syallop/PLPrinter
-    commit: 65f4d3805c06fbbe0e4313f17a2129e5fe2187f9
 - completed:
     hackage: hashing-0.1.0.1@sha256:98861f16791946cdf28e3c7a6ee9ac8b72d546d6e33c569c7087ef18253294e7,2816
     pantry-tree:
-      size: 704
       sha256: a204259113ac5761ded1dac7e37a9d54245f84c8adaeec452346fe3256337d83
+      size: 704
   original:
     hackage: hashing-0.1.0.1@sha256:98861f16791946cdf28e3c7a6ee9ac8b72d546d6e33c569c7087ef18253294e7,2816
 - completed:
     hackage: base58-bytestring-0.1.0@sha256:a1da72ee89d5450bac1c792d9fcbe95ed7154ab7246f2172b57bd4fd9b5eab79,1913
     pantry-tree:
-      size: 419
       sha256: 053784f8edef6433518c873a7c502dc75348f812e2384e1306f90467ea54f40b
+      size: 419
   original:
     hackage: base58-bytestring-0.1.0@sha256:a1da72ee89d5450bac1c792d9fcbe95ed7154ab7246f2172b57bd4fd9b5eab79,1913
 snapshots:
 - completed:
-    size: 565720
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/17/8.yaml
-    sha256: 76bf8992ff8dfe6eda9c02f81866138c2369344d5011ab39ae403457c4448b03
-  original: lts-17.8
+    sha256: abcc4a65c15c7c2313f1a87f01bfd4d910516e1930b99653eef1d2d006515916
+    size: 640074
+    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/21/24.yaml
+  original: lts-21.24

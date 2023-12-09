@@ -151,8 +151,14 @@ instance Shortable Hash ShortHash where
                                            -> ""
                                          Just (c,_)
                                            -> Text.singleton c
-             Just shortenedHash = mkBase58ShortHash (Just sourceAlg) shortenedText
-          in shortenedHash
+          in case mkBase58ShortHash (Just sourceAlg) shortenedText of
+               Just shortenedHash
+                 -> shortenedHash
+
+               -- TODO: When can this actually happen?
+               -- If we can fail, the interface should know about it.
+               Nothing
+                 -> error (mconcat ["Could not shorten ", show sourceHash, " against ", show sourceAlg, show sourceText])
 
     Just againstHash
       -- If the hashes use a different algorithm the bytes arent needed to
@@ -166,8 +172,14 @@ instance Shortable Hash ShortHash where
        -> let (sourceAlg, sourceText)= unBase58 sourceHash
               (_, againstText) = unBase58 againstHash
               shortenedText = shortenAgainst sourceText (Just againstText)
-              Just shortenedHash = mkBase58ShortHash (Just sourceAlg) shortenedText
-           in shortenedHash
+           in case mkBase58ShortHash (Just sourceAlg) shortenedText of
+                Just shortenedHash
+                  -> shortenedHash
+
+                -- TODO: When can this actually happen?
+                -- If we can fail, the interface should know about it.
+                Nothing
+                  -> error (mconcat ["Could not shorten ", show sourceHash, " against ", show againstText])
 
   isShortened shortHash longHash
     = let (shortAlg,shortText) = unBase58ShortHash shortHash
